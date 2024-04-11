@@ -1,11 +1,11 @@
 package com.menora.eventsreader.services.db;
 
-import com.menora.eventsreader.entities.xml.Event;
-import com.menora.eventsreader.entities.xml.RequestDetails;
-import com.menora.eventsreader.entities.xml.Root;
 import com.menora.eventsreader.entities.db.Company;
 import com.menora.eventsreader.entities.db.Insured;
 import com.menora.eventsreader.entities.db.Product;
+import com.menora.eventsreader.entities.xml.Event;
+import com.menora.eventsreader.entities.xml.RequestDetails;
+import com.menora.eventsreader.entities.xml.Root;
 import com.menora.eventsreader.repositories.CompanyRepository;
 import com.menora.eventsreader.repositories.InsuredRepository;
 import com.menora.eventsreader.repositories.ProductRepository;
@@ -14,8 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +49,6 @@ public class XmlRootPersistHandler {
                                                 orElseGet(() -> {
                                                     Company companyToSave = Company.builder().id(requestDetails.getId())
                                                             .acceptDate(Timestamp.valueOf(requestDetails.getAcceptDate()))
-                                                                                  // .acceptDate(toDate(requestDetails.getAcceptDate()))
                                                                                    .sourceCompany(requestDetails.getSourceCompany())
                                                                                    .build();
                                                     return companyRepository.save(companyToSave);
@@ -88,9 +85,4 @@ public class XmlRootPersistHandler {
         return productRepository.saveAll(products);
     }
 
-    private Date toDate(String date) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
-        Date ans = Date.valueOf(LocalDate.parse(date, df));
-        return ans;
-    }
 }

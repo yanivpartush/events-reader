@@ -31,7 +31,7 @@ public class XmlFileProcessor {
     @Scheduled(cron = "${cron.expression}")
     public void execute() {
         System.out.println("Processing started at [ " + Instant.now() + "]");
-        process();
+        this.process();
         String companyId = xmlRootPersistHandler.persist(rootObject);
         System.out.println("File processed for company id = [ " + companyId + "]");
     }

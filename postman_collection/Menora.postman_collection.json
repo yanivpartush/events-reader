@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "6d6df6fb-e12e-4df7-b982-8cc15c5b3a67",
+		"name": "Menora",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25749184"
+	},
+	"item": [
+		{
+			"name": "Get insured by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/insureds/111111111",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"insureds",
+						"111111111"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

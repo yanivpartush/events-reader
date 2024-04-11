@@ -9,7 +9,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
 @Component
-public class XmlParser {
+public class XmlParser  {
 
     public Root parse(File fileToParse) {
 
@@ -21,7 +21,7 @@ public class XmlParser {
             return root;
         } catch (
                 JAXBException e) {
-            System.out.println("Error.Reason " + e.toString());
+            System.out.println("Parsing error.Reason : " + e);
         }
         return null;
     }

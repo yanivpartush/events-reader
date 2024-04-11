@@ -12,6 +12,5 @@ public class InsuredResponseDto {
 
     private String id;
 
-
     private List<ProductResponseDto> products;
 }
