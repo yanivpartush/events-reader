@@ -3,10 +3,9 @@ package com.menora.eventsreader.services.db;
 import com.menora.eventsreader.controllers.dto.response.CompanyResponseDto;
 import com.menora.eventsreader.controllers.dto.response.InsuredResponseDto;
 import com.menora.eventsreader.controllers.dto.response.ProductResponseDto;
-import com.menora.eventsreader.entities.Company;
-import com.menora.eventsreader.entities.Product;
+import com.menora.eventsreader.entities.db.Company;
+import com.menora.eventsreader.entities.db.Product;
 import com.menora.eventsreader.repositories.CompanyRepository;
-import com.menora.eventsreader.repositories.InsuredRepository;
 import com.menora.eventsreader.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,6 @@ public class InsuredService {
     private CompanyRepository companyRepository;
 
     public List<CompanyResponseDto> getInsuredById(String insuredId) {
-
         List<Company> companies = companyRepository.findAll();
         List<CompanyResponseDto> companyResponseDtoList = new ArrayList<>();
         CompanyResponseDto companyResponseDto = new CompanyResponseDto();

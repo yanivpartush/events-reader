@@ -21,4 +21,5 @@ public class InsuredController {
     public List<CompanyResponseDto> getInsuredById(@PathVariable String id) {
         return insuredService.getInsuredById(id);
     }
+
 }

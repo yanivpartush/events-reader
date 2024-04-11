@@ -1,11 +1,11 @@
 package com.menora.eventsreader.services.db;
 
-import com.menora.eventsreader.beans.Event;
-import com.menora.eventsreader.beans.RequestDetails;
-import com.menora.eventsreader.beans.Root;
-import com.menora.eventsreader.entities.Company;
-import com.menora.eventsreader.entities.Insured;
-import com.menora.eventsreader.entities.Product;
+import com.menora.eventsreader.entities.xml.Event;
+import com.menora.eventsreader.entities.xml.RequestDetails;
+import com.menora.eventsreader.entities.xml.Root;
+import com.menora.eventsreader.entities.db.Company;
+import com.menora.eventsreader.entities.db.Insured;
+import com.menora.eventsreader.entities.db.Product;
 import com.menora.eventsreader.repositories.CompanyRepository;
 import com.menora.eventsreader.repositories.InsuredRepository;
 import com.menora.eventsreader.repositories.ProductRepository;
@@ -13,13 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class RootObjectWriter {
+public class XmlRootPersistHandler {
 
     @Autowired
     private CompanyRepository companyRepository;
@@ -49,7 +50,8 @@ public class RootObjectWriter {
         Company companyToAdd = companyRepository.findById(requestDetails.getId()).
                                                 orElseGet(() -> {
                                                     Company companyToSave = Company.builder().id(requestDetails.getId())
-                                                                                   .acceptDate(toDate(requestDetails.getAcceptDate()))
+                                                            .acceptDate(Timestamp.valueOf(requestDetails.getAcceptDate()))
+                                                                                  // .acceptDate(toDate(requestDetails.getAcceptDate()))
                                                                                    .sourceCompany(requestDetails.getSourceCompany())
                                                                                    .build();
                                                     return companyRepository.save(companyToSave);
@@ -72,7 +74,7 @@ public class RootObjectWriter {
 
     private List<Product> saveProducts(Event event, Insured insured) {
         List<Product> products = new ArrayList<>();
-        for (com.menora.eventsreader.beans.Product product : event.getProducts()) {
+        for (com.menora.eventsreader.entities.xml.Product product : event.getProducts()) {
             Product productToSave = Product.builder()
                                            .type(product.getType())
                                            .endDate(Date.valueOf(product.getEndDate()))

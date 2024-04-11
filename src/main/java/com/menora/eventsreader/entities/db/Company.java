@@ -1,4 +1,4 @@
-package com.menora.eventsreader.entities;
+package com.menora.eventsreader.entities.db;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Company {
     private String id;
 
     @Column(name = "accept_date")
-    private Date acceptDate;
+    private Timestamp acceptDate;
 
     @Column(name = "source_company")
     private String sourceCompany;

@@ -1,4 +1,4 @@
-package com.menora.eventsreader.entities;
+package com.menora.eventsreader.entities.db;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,14 +1,14 @@
-package com.menora.eventsreader.services;
+package com.menora.eventsreader.services.xml;
 
-import com.menora.eventsreader.beans.Root;
-import org.springframework.stereotype.Service;
+import com.menora.eventsreader.entities.xml.Root;
+import org.springframework.stereotype.Component;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
-@Service
+@Component
 public class XmlParser {
 
     public Root parse(File fileToParse) {

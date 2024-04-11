@@ -1,6 +1,6 @@
 package com.menora.eventsreader.repositories;
 
-import com.menora.eventsreader.entities.Product;
+import com.menora.eventsreader.entities.db.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
-
 
     @Query("SELECT p FROM Product p " +
             "INNER JOIN Insured i ON p.insured.id = i.id " +
